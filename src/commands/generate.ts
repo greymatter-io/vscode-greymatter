@@ -2,7 +2,6 @@
 
 import process = require("child_process");
 import vscode = require("vscode");
-import { RSA_PKCS1_OAEP_PADDING } from "constants";
 
 // Generate returns a command that generates file system entries using greymatter. If
 // args contains a `fsPath` property the entries will be rooted at that location;
@@ -15,7 +14,9 @@ export function Generate(
     const sources = <string[]>(
       JSON.parse(context.workspaceState.get("greymatter.sources") || "[]")
     );
-    const source = (await showQuickInputBox(sources)) || "";
+    const source =
+      (await showQuickInputBox(sources, "Enter template source URL")) || "";
+
     const generate = process.spawn("greymatter", [
       "generate",
       source,
@@ -46,10 +47,14 @@ export function Generate(
 }
 
 // showQuickInputBox displays a QuickPick that allows for any text.
-function showQuickInputBox(values: string[]): Promise<string | undefined> {
+function showQuickInputBox(
+  values: string[],
+  inputLabel: string
+): Promise<string | undefined> {
   return new Promise<string>((resolve) => {
     const i = values.map((label) => ({ label }));
     const p = vscode.window.createQuickPick();
+    p.placeholder = inputLabel;
     p.items = i;
     p.onDidAccept(() => {
       p.hide();
