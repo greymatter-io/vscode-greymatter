@@ -1,65 +1,25 @@
-# vscode-greymatter README
+# vscode-greymatter
 
-This is the README for your extension "vscode-greymatter". After writing up a brief description, we recommend including the following sections.
+## Commands
 
-## Features
+### "Generate Grey Matter Configurations" (`extension.greymatter.generate`)
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+This command is available via the context menu in the Explorer file tree (right click a folder) or via the command palette. 
 
-For example if there is an image subfolder under your extension project workspace:
+## Development
 
-\!\[feature X\]\(images/feature-x.png\)
+- Press `F5` to open a new window with your extension loaded. Alternatively, you can open the VSCode debugger and click "Run Extension"
+- Run your command from the command palette by pressing (`Ctrl+Shift+P` or `Cmd+Shift+P` on Mac) and typing `Grey Matter`.
+- Set breakpoints in your code inside `src/extension.ts` to debug your extension.
+- Find output from your extension in the debug console.
+- You can relaunch the extension from the debug toolbar after changing code in `src/extension.ts`.
+- You can also reload (`Ctrl+R` or `Cmd+R` on Mac) the VS Code window with your extension to load your changes.
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+## Tests
 
-## Requirements
-
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
-
-## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
------------------------------------------------------------------------------------------------------------
-
-## Working with Markdown
-
-**Note:** You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (macOS) to see a list of Markdown snippets
-
-### For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+- Open the debug viewlet (`Ctrl+Shift+D` or `Cmd+Shift+D` on Mac) and from the launch configuration dropdown pick `Extension Tests`.
+- Press `F5` to run the tests in a new window with your extension loaded.
+- See the output of the test result in the debug console.
+- Make changes to `src/test/suite/extension.test.ts` or create new test files inside the `test/suite` folder.
+  - The provided test runner will only consider files matching the name pattern `**.test.ts`.
+  - You can create folders inside the `test` folder to structure your tests any way you want.
