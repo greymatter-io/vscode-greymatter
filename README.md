@@ -1,10 +1,12 @@
 # vscode-greymatter
 
+## Prerequisites
+
+- `greymatter` CLI version 2.x
+
 ## Commands
 
-### "Generate Grey Matter Configurations" (`extension.greymatter.generate`)
-
-This command is available via the context menu in the Explorer file tree (right click a folder) or via the command palette. 
+- "Generate Grey Matter Configurations" (`extension.greymatter.generate`): Available via the context menu in the Explorer file tree (right click a folder) or the command palette (`Ctrl+Shift+P` or `Cmd+Shift+P` on Mac).
 
 ## Development
 
