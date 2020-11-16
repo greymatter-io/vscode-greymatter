@@ -34,10 +34,6 @@ jobs:
           command: |
             tar -czvf vscode-greymatter-$VERSION.tar.gz build/greymatter-*.vsix VERSION LICENSE README.md
       - run:
-          name: Login to Production Nexus
-          command: |
-            docker login -u $NEXUS_USER -p $NEXUS_PASSWORD docker.greymatter.io
-      - run:
           name: Push tar to Nexus
           command: |
             export VERSION="${CIRCLE_TAG:1}"
