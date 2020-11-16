@@ -66,6 +66,7 @@ workflows:
             tags:
               only: /^v.*/
       - publish:
+          context: nexus
           requires:
             - build
           filters:
