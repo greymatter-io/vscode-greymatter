@@ -32,7 +32,7 @@ jobs:
       - run:
           name: Package skinny tar
           command: |
-            tar -czvf vscode-greymatter-$VERSION.tar.gz greymatter-*.vsix VERSION LICENSE README.md
+            tar -czvf vscode-greymatter-$VERSION.tar.gz build/greymatter-*.vsix VERSION LICENSE README.md
       - run:
           name: Login to Production Nexus
           command: |
