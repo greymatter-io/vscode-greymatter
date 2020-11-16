@@ -32,6 +32,7 @@ jobs:
       - run:
           name: Package skinny tar
           command: |
+            export VERSION="${CIRCLE_TAG:1}"
             tar -czvf vscode-greymatter-$VERSION.tar.gz build/greymatter-*.vsix VERSION LICENSE README.md
       - run:
           name: Push tar to Nexus
