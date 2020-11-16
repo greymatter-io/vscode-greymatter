@@ -1,0 +1,77 @@
+defaults: &defaults
+  working_directory: ~/repo
+  docker:
+    - image: circleci/node:14
+
+version: 2
+jobs:
+  build:
+    <<: *defaults
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: npm ci
+      - run:
+          name: Package the application
+          command: |
+            npm run package
+      - store_artifacts:
+          path: greymatter-*.vsix
+      - persist_to_workspace:
+          root: ~/repo
+          paths:
+            - greymatter-*.vsix
+
+  publish:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/repo
+      - run:
+          name: Package skinny tar
+          command: |
+            tar -czvf vscode-greymatter-$VERSION.tar.gz greymatter-*.vsix VERSION README.md
+      - run:
+          name: Login to Production Nexus
+          command: |
+            docker login -u $NEXUS_USER -p $NEXUS_PASSWORD docker.greymatter.io
+      - run:
+          name: Push tar to Nexus
+          command: |
+            export VERSION="${CIRCLE_TAG:1}"
+            curl -u $NEXUS_USER:$NEXUS_PASSWORD --upload-file ./assets/vscode-greymatter-$VERSION.tar.gz https://nexus.greymatter.io/repository/raw/development/vscode-greymatter/vscode-greymatter-$VERSION.tar.gz
+      - run:
+          name: Publish to VSCode Marketplace
+          command: |
+            vsce publish --pat $VSCODE_PAT
+
+workflows:
+  version: 2
+  # Runs the build on any commit, ignoring tagged releases
+  all-but-release: 
+    jobs:
+      - build:
+          filters:
+            tags:
+              ignore: /^v.*/
+            branches:
+              only: /.*/
+     
+  tagged-release:
+    jobs:
+      - build:
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^v.*/
+      - publish:
+          requires:
+            - build
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^v.*/
