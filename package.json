@@ -37,6 +37,7 @@
     "vscode:prepublish": "npm run compile",
     "package": "./.circleci/version.sh && mkdir build && vsce package greymatter -o ./build/greymatter-$npm_package_version.vsix",
     "compile": "tsc -p ./",
+    "publish-marketplace": "vsce publish --pat $VSCODE_PAT",
     "lint": "eslint src --ext ts",
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile && npm run lint",

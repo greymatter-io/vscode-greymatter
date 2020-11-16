@@ -42,7 +42,7 @@ jobs:
       - run:
           name: Publish to VSCode Marketplace
           command: |
-            vsce publish --pat $VSCODE_PAT
+            npm run publish-marketplace
 
 workflows:
   version: 2
