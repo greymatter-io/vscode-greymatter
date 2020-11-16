@@ -38,7 +38,7 @@ jobs:
           name: Push tar to Nexus
           command: |
             export VERSION="${CIRCLE_TAG:1}"
-            curl -u $NEXUS_USER:$NEXUS_PASSWORD --upload-file ./vscode-greymatter-$VERSION.tar.gz https://nexus.greymatter.io/repository/raw/development/vscode-greymatter/vscode-greymatter-v$VERSION.tar.gz
+            curl -u $NEXUS_USER:$NEXUS_PASSWORD --upload-file ./vscode-greymatter-$VERSION.tar.gz https://nexus.greymatter.io/repository/raw/development/vscode-greymatter/vscode-greymatter-$VERSION.tar.gz
       - run:
           name: Publish to VSCode Marketplace
           command: |
