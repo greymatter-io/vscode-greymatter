@@ -17,11 +17,11 @@ jobs:
           command: |
             npm run package
       - store_artifacts:
-          path: greymatter-*.vsix
+          path: build
       - persist_to_workspace:
           root: ~/repo
           paths:
-            - greymatter-*.vsix
+            - build
 
   publish:
     <<: *defaults
