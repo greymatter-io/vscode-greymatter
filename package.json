@@ -2,7 +2,7 @@
   "name": "greymatter",
   "displayName": "Grey Matter",
   "description": "Grey Matter VSCode Extension for template driven configuration of the service mesh",
-  "version": "0.0.1-rc",
+  "version": "0.0.2",
   "publisher": "greymatter",
   "icon": "assets/ext-icon.png",
   "repository": "https://github.com/greymatter-io/vscode-greymatter",
