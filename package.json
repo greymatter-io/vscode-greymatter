@@ -1,8 +1,11 @@
 {
   "name": "greymatter",
   "displayName": "Grey Matter",
-  "description": "Grey Matter VSCode Extension",
+  "description": "Grey Matter VSCode Extension for template driven configuration of the service mesh",
   "version": "0.0.1",
+  "publisher": "greymatter",
+  "icon": "assets/ext-icon.png",
+  "repository": "https://github.com/greymatter-io/vscode-greymatter",
   "engines": {
     "vscode": "^1.48.0"
   },
@@ -32,7 +35,9 @@
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
+    "package": "./.circleci/version.sh && mkdir build && vsce package greymatter -o ./build/greymatter-$npm_package_version.vsix",
     "compile": "tsc -p ./",
+    "publish-marketplace": "vsce publish --pat $VSCODE_PAT",
     "lint": "eslint src --ext ts",
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile && npm run lint",
@@ -49,6 +54,7 @@
     "glob": "^7.1.6",
     "mocha": "^7.1.2",
     "typescript": "^3.8.3",
-    "vscode-test": "^1.3.0"
+    "vscode-test": "^1.3.0",
+    "vsce": "^1.81.1"
   }
 }

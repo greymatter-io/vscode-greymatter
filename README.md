@@ -1,27 +1,22 @@
 # vscode-greymatter
 
+The Grey Matter VSCode extension provides user shortcuts to generate configuration files for a Grey Matter based service mesh.
+
+> Note: This extension is not entirely standalone as it is a companion tool to the Grey Matter CLI. If you would like a demo or to learn more about Grey Matter pricing, please reach out to us at [info@greymatter.io](mailto:info@greymatter.io).
+
+![Generate Grey Matter Configurations via the Command Pallete](./assets/screenshot-1.png)
+
 ## Prerequisites
 
-- `greymatter` CLI version 2.x
+- `greymatter` CLI version 2.x installed in your PATH
+- Template source such as [pathogen-greymatter](https://github.com/greymatter-io/pathogen-greymatter)
 
-## Commands
+## Usage Instructions
 
-- "Generate Grey Matter Configurations" (`extension.greymatter.generate`): Available via the context menu in the Explorer file tree (right click a folder) or the command palette (`Ctrl+Shift+P` or `Cmd+Shift+P` on Mac).
+1. Open the command palette (Ctrl+Shift+P on Windows and Linux, Cmd+Shift+P on OS X) and search for Grey Matter. Alternatively, you can right click on any folder in the Explorer.
 
-## Development
+2. Select "Generate Grey Matter Configurations"
 
-- Press `F5` to open a new window with your extension loaded. Alternatively, you can open the VSCode debugger and click "Run Extension"
-- Run your command from the command palette by pressing (`Ctrl+Shift+P` or `Cmd+Shift+P` on Mac) and typing `Grey Matter`.
-- Set breakpoints in your code inside `src/extension.ts` to debug your extension.
-- Find output from your extension in the debug console.
-- You can relaunch the extension from the debug toolbar after changing code in `src/extension.ts`.
-- You can also reload (`Ctrl+R` or `Cmd+R` on Mac) the VS Code window with your extension to load your changes.
+3. Enter the template source URL, e.g. `git@github.com/pathogen-greymatter/pathogen-greymatter.git//service`. The extension will remember template sources previously used within the workspace.
 
-## Tests
-
-- Open the debug viewlet (`Ctrl+Shift+D` or `Cmd+Shift+D` on Mac) and from the launch configuration dropdown pick `Extension Tests`.
-- Press `F5` to run the tests in a new window with your extension loaded.
-- See the output of the test result in the debug console.
-- Make changes to `src/test/suite/extension.test.ts` or create new test files inside the `test/suite` folder.
-  - The provided test runner will only consider files matching the name pattern `**.test.ts`.
-  - You can create folders inside the `test` folder to structure your tests any way you want.
+4. Answer the prompts for template values. Once all variables have been resolved, the resulting configuration files will be written to the current workspace directory, or a folder if the extension was invoked from the context menu.
