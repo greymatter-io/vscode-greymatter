@@ -35,9 +35,9 @@
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
-    "package": "./.circleci/version.sh && mkdir build && vsce package greymatter -o ./build/greymatter-$npm_package_version.vsix",
+    "package": "./.circleci/version.sh && mkdir build && vsce package greymatter -o ./build/greymatter-$npm_package_version.vsix --githubBranch release-1.0",
     "compile": "tsc -p ./",
-    "publish-marketplace": "vsce publish --pat $VSCODE_PAT",
+    "publish-marketplace": "vsce publish --pat $VSCODE_PAT --githubBranch release-1.0",
     "lint": "eslint src --ext ts",
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile && npm run lint",
