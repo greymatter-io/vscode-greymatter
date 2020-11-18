@@ -17,6 +17,6 @@ The Grey Matter VSCode extension provides user shortcuts to generate configurati
 
 2. Select "Generate Grey Matter Configurations"
 
-3. Enter the template source URL, e.g. `git@github.com/pathogen-greymatter/pathogen-greymatter.git//service`. The extension will remember template sources previously used within the workspace.
+3. Enter the template source URL, e.g. `git@github.com:greymatter-io/pathogen-greymatter.git//service`. The extension will remember template sources previously used within the workspace.
 
 4. Answer the prompts for template values. Once all variables have been resolved, the resulting configuration files will be written to the current workspace directory, or a folder if the extension was invoked from the context menu.
